@@ -60,12 +60,12 @@ module Button_Canvas(
         if (reset) begin
             move_counter <= 0;
         end else begin
-            move_counter <= move_counter + 1; // 16 - bit counter maxes out at 2^16 = 65536
+            move_counter <= move_counter + 1; // 17 - bit counter maxes out at 2^17 = 131072
         end
     end
     
     // Generate movement tick (slower cursor movement)
-    assign move_tick = (move_counter == 0); // Move every 65536 cycles (~2.6ms at 25MHz)
+    assign move_tick = (move_counter == 0); // Move every 131072 cycles (~5.2ms at 25MHz)
     
     // Cursor position control
     always_ff @(posedge pixel_clk_25) begin
